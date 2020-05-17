@@ -1,0 +1,32 @@
+
+.cardspot {
+    border-style: dotted;
+    width: 150px;
+    height: 200px;
+    margin: 20px;
+    text-align: center;
+    font-size: 30px;
+    flex: 1 1 auto;
+    justify-content: center;
+    align-content: center;
+    align-items: center;      /* NEW */
+}
+.cardText {
+    padding-top: 82px;
+}
+.facedown {
+    background-color: aqua;
+}
+.negativeCard {
+    background-color: red;
+}
+.mulliganCard {
+    background-color: green;
+}
+.okCard {
+    background-color: black;
+    color: white;
+}
+.badCard {
+    background-color: yellow;
+}

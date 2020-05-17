@@ -1,25 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState, FunctionComponent } from 'react';
 import './App.css';
+import PlayField from './PlayField';
+import Deck from './Deck';
+import { PlayerCard } from './PlayerCard';
 
-function App() {
+const App: FunctionComponent = () => {
+  let [deck, setDeck] = useState(new Deck());
+  let [playerCards, setPlayerCards] = useState([] as PlayerCard[]);
+  let flipAction = (pc: PlayerCard) => {
+    let newCards: PlayerCard[] = [];
+    Object.assign(newCards, playerCards);
+    setPlayerCards(newCards);
+  }
+  
+  let dealCards = (): void => {
+    playerCards = [];
+    [1,2,3,4,5,6,7,8,9].forEach(() => {
+      playerCards.push(new PlayerCard(deck.takeTopCard()!, flipAction));
+    });
+    setPlayerCards(playerCards);
+    setDeck(deck);
+    console.log(playerCards);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <>
+    <button className='DealButton' onClick={e => dealCards()}>Deal</button>
+    <div className="GameTable">
+      
+      <PlayField cards={playerCards}></PlayField>
+      <div className='DrawPiles'>
+        <div className='UnplayedDeck'>Unplayed deck</div>
+        <div className='DrawFromDeck'>Discard pile</div>
+      </div>
     </div>
+    </>
   );
 }
 
