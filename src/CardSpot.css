@@ -5,14 +5,14 @@
     height: 200px;
     margin: 20px;
     text-align: center;
-    font-size: 30px;
+    font-size: 60px;
     flex: 1 1 auto;
     justify-content: center;
     align-content: center;
     align-items: center;      /* NEW */
 }
 .cardText {
-    padding-top: 82px;
+    padding-top: 62px;
 }
 .facedown {
     background-color: aqua;
